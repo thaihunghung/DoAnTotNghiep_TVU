@@ -4,14 +4,11 @@ import { Link, Route, Routes } from 'react-router-dom';
 // import Post from "../components/pages/Admin/Post/Post";
 import { useState } from "react";
 import { message, Spin } from 'antd';
-
 import StoreProgram from '../components/pages/Admin/Manage/ManageProgram/StoreProgram';
 import CreateProgram from '../components/pages/Admin/Manage/ManageProgram/CreateProgram';
 import PoPlo from '../components/pages/Admin/Manage/ManageProgram/PoPlo';
-
 import StorePo from '../components/pages/Admin/Manage/ManagePo/StorePo';
 import CreatePo from '../components/pages/Admin/Manage/ManagePo/CreatePo';
-
 
 import CreatePlo from '../components/pages/Admin/Manage/ManagePlo/CreatePlo';
 import StorePlo from '../components/pages/Admin/Manage/ManagePlo/StorePlo';
@@ -26,18 +23,7 @@ import UpdatePlo from '../components/pages/Admin/Manage/ManagePlo/UpdatePlo';
 import ManageProgram from '../components/pages/Admin/Manage/ManageProgram/ManageProgram';
 import ManagePo from '../components/pages/Admin/Manage/ManagePo/ManagePo';
 import ManagePlo from '../components/pages/Admin/Manage/ManagePlo/ManagePlo';
-
-
-// import UserManager from "../components/pages/Admin/UserManager/UserManager";
-// import PostStored from "../components/pages/Admin/Post/PostStored";
-// import CategoryManager from "../components/pages/Admin/CategoryManager/CategoryManager";
-// import UpdatePost from "../components/pages/Admin/Post/UpdatePost";
-// import CreatePost from "../components/pages/Admin/Post/CreatePost";
-// import PostCategory from "../components/pages/Admin/CategoryManager/PostCategory";
-// import UpdateCategory from "../components/pages/Admin/CategoryManager/UpdateCategory";
-// import DepartmentManager from "../components/pages/Admin/DepartmentManager/DepartmentManager.js";
-// import UpdateDepartment from "../components/pages/Admin/DepartmentManager/UpdateDepartment.js";
-// import CreateDepartment from "../components/pages/Admin/DepartmentManager/CreateDepartment.js";
+import FormPoint from '../components/pages/Admin/FormPoint/FormPoint';
 
 function Admin(props) {
 
@@ -74,7 +60,8 @@ function Admin(props) {
           <Route path="/manage-program/update/:id" element={<UpdateProgramById collapsedNav={collapsedNav} setCollapsedNav={setCollapsedNav} successNoti={successNoti} errorNoti={errorNoti} setSpinning={setSpinning}/>} />
 
           <Route path="/Program" element={<Program collapsedNav={collapsedNav} setCollapsedNav={setCollapsedNav} successNoti={successNoti} errorNoti={errorNoti} setSpinning={setSpinning}/>} />          
-          
+          <Route path="/manage-point" element={<FormPoint collapsedNav={collapsedNav} setCollapsedNav={setCollapsedNav} successNoti={successNoti} errorNoti={errorNoti} setSpinning={setSpinning}/>} />
+
           <Route path="/manage-po" element={<ManagePo collapsedNav={collapsedNav} setCollapsedNav={setCollapsedNav} successNoti={successNoti} errorNoti={errorNoti} setSpinning={setSpinning}/>} />
           <Route path="/manage-po/store" element={<StorePo collapsedNav={collapsedNav} setCollapsedNav={setCollapsedNav} successNoti={successNoti} errorNoti={errorNoti} setSpinning={setSpinning}/>} />
           <Route path="/manage-po/create" element={<CreatePo collapsedNav={collapsedNav} setCollapsedNav={setCollapsedNav} successNoti={successNoti} errorNoti={errorNoti} setSpinning={setSpinning}/>} />
@@ -86,6 +73,9 @@ function Admin(props) {
           <Route path="/manage-plo/create" element={<CreatePlo collapsedNav={collapsedNav} setCollapsedNav={setCollapsedNav} successNoti={successNoti} errorNoti={errorNoti} setSpinning={setSpinning}/>} />
           <Route path="/manage-plo/update" element={<UpdatePlo collapsedNav={collapsedNav} setCollapsedNav={setCollapsedNav} successNoti={successNoti} errorNoti={errorNoti} setSpinning={setSpinning}/>} />
           <Route path="/manage-plo/update/:id" element={<UpdatePloById collapsedNav={collapsedNav} setCollapsedNav={setCollapsedNav} successNoti={successNoti} errorNoti={errorNoti} setSpinning={setSpinning}/>} />
+        
+        
+        
         </Routes> 
       </div>
     </div>

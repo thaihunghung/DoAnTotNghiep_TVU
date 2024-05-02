@@ -4,26 +4,6 @@ import { Tooltip } from "@nextui-org/react";
 import { Collapse } from 'antd';
 import "./FormPoint.css"
 
-import { message } from 'antd';
-import CustomUpload from "../Utils/CustomUpload/CustomUpload";
-
-const props = {
-  name: 'file',
-  action: 'http://localhost:1509/api/upload',
-  headers: {
-    authorization: 'authorization-text',
-  },
-  onChange(info) {
-    if (info.file.status !== 'uploading') {
-      console.log(info.file, info.fileList);
-    }
-    if (info.file.status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully`);
-    } else if (info.file.status === 'error') {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
-};
 const CDR = [
   { CDR: 'CDR1', CONTENT: 'chuẩn đầu ra 1' }
 ];
@@ -47,8 +27,7 @@ const items = [
 ];
 const FormPoint = () => {
   return ( 
-    <div className="w-full p-2 py-0 flex flex-col lg:p-6 lg:py-0 xl:p-10 xl:py-0 leading-6 mt-10">
-      <CustomUpload props={props}/>
+    <div>
       <div className="w-full flex flex-col p-2 py-0 mb-5  sm:p-5 sm:mb-5 sm:py-0 sm:flex-col lg:flex-row lg:mb-0 xl:flex-row xl:mb-0">
         <div className="w-full rounded-lg sm:rounded-lg lg:rounded-none xl:rounded-none text-justify lg:w-[48%] xl:w-[60%] border-[1px] border-black flex flex-col sm:flex-col lg:flex-row xl:flex-row">
           <div className="w-full hidden p-2 bg-[#008000] sm:hidden lg:w-[20%] lg:block xl:w-[20%] xl:block border-r-0 sm:border-r-0 sm:px-0 lg:border-r-[1px] xl:border-r-[1px]  border-black">
@@ -262,11 +241,11 @@ const FormPoint = () => {
               <div className="border-black border-1 rounded-lg w-full">
                 <table className="w-full">
                   <tr>
-                    <td className="w-[100px] align-middle text-left items-center p-2 border-black border-1 border-l-0 border-t-0"><Radio value="1">Đạt 0</Radio></td>
-                    <td className="w-[100px] align-middle text-left items-center p-2 border-black border-1 border-t-0"><Radio value="2">Đạt 1</Radio></td>
-                    <td className="w-[100px] align-middle text-left items-center p-2 border-black border-1 border-t-0"><Radio value="3">Đạt 2</Radio></td>
-                    <td className="w-[100px] align-middle text-left items-center p-2 border-black border-1 border-t-0"><Radio value="4">Đạt 3</Radio></td>
-                    <td className="w-[100px] align-middle text-left items-center p-2 border-black border-1 border-t-0 border-r-0"> <Radio value="5">Đạt 4</Radio></td>
+                    <td className="w-[100px] align-middle text-left items-center p-2 border-black border-1 border-l-0 border-t-0"><div className="text-center items-center w-full">Đạt 0 <Radio value="1"></Radio></div></td>
+                    <td className="w-[100px] align-middle text-left items-center p-2 border-black border-1 border-t-0"><div className="text-center items-center w-full">Đạt 1 <Radio value="2"></Radio></div></td>
+                    <td className="w-[100px] align-middle text-left items-center p-2 border-black border-1 border-t-0"><div className="text-center items-center w-full">Đạt 2 <Radio value="3"></Radio></div></td>
+                    <td className="w-[100px] align-middle text-left items-center p-2 border-black border-1 border-t-0"><div className="text-center items-center w-full">Đạt 3 <Radio value="4"></Radio></div></td>
+                    <td className="w-[100px] align-middle text-left items-center p-2 border-black border-1 border-t-0 border-r-0"><div className="text-center items-center w-full">Đạt 4 <Radio value="5"></Radio></div></td>
                   </tr>
                   <tr>
                     <td className="w-[100px] p-2 border-black border-1 border-l-0 text-center">
