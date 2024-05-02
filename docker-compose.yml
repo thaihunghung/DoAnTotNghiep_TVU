@@ -12,7 +12,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - mysqldata:/var/lib/mysql
+      - ./tvu.sql:/docker-entrypoint-initdb.d/tvu.sql
     restart: always
     networks:
       - TVU_Network
@@ -68,5 +68,3 @@ networks:
   TVU_Network:
     driver: bridge
 
-volumes:
-  mysqldata:
