@@ -219,7 +219,7 @@ function Nav(props) {
 
                 <motion.div
                     className={`Admin-Navbar flex flex-col w-["270px"] ${collapsedNav ? "w-[87px]" : ""
-                        } h-[100vh] bg-slate-800 p-3  justify-between`}
+                        } h-[100vh] bg-slate-600 p-3  justify-between`}
                     initial={{ width: "270px" }}
                     animate={{ width: collapsedNav ? "87px" : "270px" }}
                     transition={{ duration: 0.4 }}

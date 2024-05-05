@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { RadioGroup, Radio } from "@nextui-org/react";
 import { Tooltip } from "@nextui-org/react";
 import { Collapse } from 'antd';
@@ -25,7 +25,24 @@ const items = [
     </p>,
   }
 ];
-const FormPoint = () => {
+const FormPoint = (nav) => {
+
+    const { setCollapsedNav } = nav;
+useEffect(() => {
+
+    const handleResize = () => {
+        if (window.innerWidth < 1024) {
+            setCollapsedNav(true);
+        } else {
+            setCollapsedNav(false);
+        }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+        window.removeEventListener("resize", handleResize);
+    };
+}, []);
   return ( 
     <div>
       <div className="w-full flex flex-col p-2 py-0 mb-5  sm:p-5 sm:mb-5 sm:py-0 sm:flex-col lg:flex-row lg:mb-0 xl:flex-row xl:mb-0">
@@ -82,44 +99,43 @@ const FormPoint = () => {
             >
               <div className="border-black border-1 rounded-lg w-full">
                 <table className="w-full">
+                <td className="align-middle text-left items-center p-2 border-black border-1 border-l-0 border-t-0"><div className="text-center items-center w-full">Đạt 0 <Radio value="1"></Radio></div></td>
+                    <td className="align-middle text-left items-center p-2 border-black border-1 border-t-0"><div className="text-center items-center w-full">Đạt 1 <Radio value="2"></Radio></div></td>
+                    <td className="align-middle text-left items-center p-2 border-black border-1 border-t-0"><div className="text-center items-center w-full">Đạt 2 <Radio value="3"></Radio></div></td>
+                    <td className="align-middle text-left items-center p-2 border-black border-1 border-t-0"><div className="text-center items-center w-full">Đạt 3 <Radio value="4"></Radio></div></td>
+                    <td className="align-middle text-left items-center p-2 border-black border-1 border-t-0 border-r-0"><div className="text-center items-center w-full">Đạt 4 <Radio value="5"></Radio></div></td>
                   <tr>
-                    <td className="w-[100px] align-middle text-left items-center p-2 border-black border-1 border-l-0 border-t-0"><Radio value="1">Đạt 0</Radio></td>
-                    <td className="w-[100px] align-middle text-left items-center p-2 border-black border-1 border-t-0"><Radio value="2">Đạt 1</Radio></td>
-                    <td className="w-[100px] align-middle text-left items-center p-2 border-black border-1 border-t-0"><Radio value="3">Đạt 2</Radio></td>
-                    <td className="w-[100px] align-middle text-left items-center p-2 border-black border-1 border-t-0"><Radio value="4">Đạt 3</Radio></td>
-                    <td className="w-[100px] align-middle text-left items-center p-2 border-black border-1 border-t-0 border-r-0"> <Radio value="5">Đạt 4</Radio></td>
-                  </tr>
-                  <tr>
-                    <td className="w-[100px] p-2 border-black border-1 border-l-0 text-center">
+                 
+                    <td className="p-2 border-black border-1 border-l-0 text-center">
                       Yếu
                     </td>
-                    <td className="w-[100px] p-2 border-black border-1 text-center">
+                    <td className="p-2 border-black border-1 text-center">
                       Kém
                     </td>
-                    <td className="w-[100px] p-2 border-black border-1 text-center">
+                    <td className="p-2 border-black border-1 text-center">
                       TB
                     </td>
-                    <td className="w-[100px] p-2 border-black border-1 text-center">
+                    <td className="p-2 border-black border-1 text-center">
                       Khá
                     </td>
-                    <td className="w-[100px] p-2 border-black border-1 border-r-0 text-center">
+                    <td className="p-2 border-black border-1 border-r-0 text-center">
                       Giỏi
                     </td>
                   </tr>
                   <tr>
-                    <td className="w-[100px] p-2 border-black border-1 border-l-0 border-b-0 text-center">
+                    <td className="p-2 border-black border-1 border-l-0 border-b-0 text-center">
                       {`${demoTong * 0}`}
                     </td>
-                    <td className="w-[100px] p-2 border-black border-1 border-b-0 text-center">
+                    <td className="p-2 border-black border-1 border-b-0 text-center">
                       {`${demoTong * 25 / 100}`}
                     </td>
-                    <td className="w-[100px] p-2 border-black border-1 border-b-0 text-center">
+                    <td className="p-2 border-black border-1 border-b-0 text-center">
                       {`${demoTong * 50 / 100}`}
                     </td>
-                    <td className="w-[100px] p-2 border-black border-1 border-b-0 text-center">
+                    <td className="p-2 border-black border-1 border-b-0 text-center">
                       {`${demoTong * 75 / 100}`}
                     </td>
-                    <td className="w-[100px] p-2 border-black border-1 border-b-0 border-r-0 text-center">
+                    <td className="p-2 border-black border-1 border-b-0 border-r-0 text-center">
                       {`${demoTong * 100 / 100}`}
                     </td>
                   </tr>
@@ -135,60 +151,60 @@ const FormPoint = () => {
               <div className="border-black border-1 rounded-lg	">
                 <table className="w-full">
                   <tr>
-                    <td className="w-[100px] align-middle text-center border-black border-1 border-t-0  border-l-0 p-2">
+                    <td className="align-middle text-center border-black border-1 border-t-0  border-l-0 p-2">
                       <Radio value="0">Đạt 0</Radio>
                     </td>
-                    <td className="w-[100px] align-middle text-center border-black border-1 p-2 border-t-0">
+                    <td className="align-middle text-center border-black border-1 p-2 border-t-0">
                       Yếu
                     </td>
-                    <td className="w-[100px] align-middle text-center border-black border-1 p-2 border-r-0 border-t-0">
+                    <td className="align-middle text-center border-black border-1 p-2 border-r-0 border-t-0">
                       {`${demoTong * 0}`}
                     </td>
                   </tr>
                   <tr>
-                    <td className="w-[100px] align-middle text-center border-black border-1 border-l-0 p-2">
+                    <td className="align-middle text-center border-black border-1 border-l-0 p-2">
                       <Radio value="1">Đạt 1</Radio>
                     </td>
-                    <td className="w-[100px] align-middle text-center border-black border-1 p-2">
+                    <td className="align-middle text-center border-black border-1 p-2">
                       Kém
                     </td>
-                    <td className="w-[100px] align-middle text-center border-black border-1 p-2 border-r-0">
+                    <td className="align-middle text-center border-black border-1 p-2 border-r-0">
                       {`${demoTong * 25 / 100}`}
                     </td>
                   </tr>
 
                   <tr>
-                    <td className="w-[100px] align-middle text-center border-black border-1 border-l-0 p-2">
+                    <td className="align-middle text-center border-black border-1 border-l-0 p-2">
                       <Radio value="2">Đạt 2</Radio>
                     </td>
-                    <td className="w-[100px] align-middle text-center border-black border-1 p-2">
+                    <td className="align-middle text-center border-black border-1 p-2">
                       TB
                     </td>
-                    <td className="w-[100px] align-middle text-center border-black border-1 p-2 border-r-0">
+                    <td className="align-middle text-center border-black border-1 p-2 border-r-0">
                       {`${demoTong * 50 / 100}`}
                     </td>
                   </tr>
 
                   <tr>
-                    <td className="w-[100px] align-middle text-center border-black border-1 border-l-0 p-2">
+                    <td className="align-middle text-center border-black border-1 border-l-0 p-2">
                       <Radio value="3">Đạt 3</Radio>
                     </td>
-                    <td className="w-[100px] align-middle text-center border-black border-1 p-2">
+                    <td className="align-middle text-center border-black border-1 p-2">
                       Khá
                     </td>
-                    <td className="w-[100px] align-middle text-center border-black border-1 p-2 border-r-0">
+                    <td className="align-middle text-center border-black border-1 p-2 border-r-0">
                       {`${demoTong * 75 / 100}`}
                     </td>
                   </tr>
 
                   <tr>
-                    <td className="w-[100px] align-middle text-center border-black border-1 border-l-0 border-b-0 p-2">
+                    <td className="align-middle text-center border-black border-1 border-l-0 border-b-0 p-2">
                       <Radio value="4">Đạt 4</Radio>
                     </td>
-                    <td className="w-[100px] align-middle text-center border-black border-1 p-2 border-b-0">
+                    <td className="align-middle text-center border-black border-1 p-2 border-b-0">
                       Giỏi
                     </td>
-                    <td className="w-[100px] align-middle text-center border-black border-1 p-2 border-b-0 border-r-0">
+                    <td className="align-middle text-center border-black border-1 p-2 border-b-0 border-r-0">
                       {`${demoTong}`}
                     </td>
                   </tr>
@@ -199,7 +215,7 @@ const FormPoint = () => {
         </div>
       </div>
 
-      <div className="w-full flex flex-col p-2 py-0 sm:p-5 sm:py-0 sm:flex-col lg:flex-row xl:flex-row">
+      {/* <div className="w-full flex flex-col p-2 py-0 sm:p-5 sm:py-0 sm:flex-col lg:flex-row xl:flex-row">
         <div className="w-full rounded-lg sm:rounded-lg lg:rounded-none xl:rounded-none text-justify lg:w-[48%] xl:w-[60%] border-[1px] sm:border-t-[1px] lg:border-t-0 xl:border-t-0 border-black flex flex-col sm:flex-col lg:flex-row xl:flex-row">
           <div className="w-full p-2 lg:w-[20%] xl:w-[20%] border-b-1 sm:border-b-1 border-r-0 sm:border-r-0 sm:px-0 lg:border-r-[1px] lg:border-b-0 xl:border-r-[1px] xl:border-b-0  border-black">
             <div className="hidden sm:block lg:block xl:block">
@@ -355,7 +371,7 @@ const FormPoint = () => {
             </RadioGroup>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
